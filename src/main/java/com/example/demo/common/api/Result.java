@@ -21,11 +21,15 @@ public class Result<T> {
     private String message;
     private T data;
 
+    // 新增：用于链路排查
+    private String requestId;
+    private String traceId;
+
     public static <T> Result<T> ok(T data) {
-        return new Result<>(0, "OK", data);
+        return new Result<>(0, "OK", data, null, null);
     }
 
     public static <T> Result<T> fail(int code, String message) {
-        return new Result<>(code, message, null);
+        return new Result<>(code, message, null, null, null);
     }
 }
